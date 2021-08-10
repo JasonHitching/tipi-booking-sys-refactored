@@ -1,0 +1,70 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "52adf5d6cdc18af204528d787cfda374",
+    "entities": [
+      {
+        "tableName": "booking_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `structureType` TEXT, `customerFirstName` TEXT, `customerLastName` TEXT, `cost` REAL NOT NULL, `bookingStartDate` TEXT, `numberOfDays` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "structureType",
+            "columnName": "structureType",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "customerFirstName",
+            "columnName": "customerFirstName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "customerLastName",
+            "columnName": "customerLastName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cost",
+            "columnName": "cost",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bookingStartDate",
+            "columnName": "bookingStartDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "numberOfDays",
+            "columnName": "numberOfDays",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '52adf5d6cdc18af204528d787cfda374')"
+    ]
+  }
+}

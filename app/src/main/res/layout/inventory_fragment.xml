@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ced4da">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/tipi_card_view"
+        android:layout_width="380dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="100dp"
+        app:cardBackgroundColor="#264653"
+        app:cardCornerRadius="15dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/cardImg"
+                android:layout_width="123dp"
+                android:layout_height="103dp"
+                android:layout_marginStart="112dp"
+                android:layout_marginLeft="112dp"
+                android:src="@drawable/tipi"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.885"
+                app:layout_constraintStart_toEndOf="@+id/tipi_component_button"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/tipi_component_button"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:padding="0dp"
+                android:text="Elements"
+                android:textSize="9sp"
+                app:backgroundTint="#2a9d8f"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/tipi_location_button"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:padding="0dp"
+                android:text="Locations"
+                android:textSize="9sp"
+                app:backgroundTint="#2a9d8f"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tipi_component_button"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/tipiTitle"
+                android:layout_width="51dp"
+                android:layout_height="42dp"
+                android:fontFamily="cursive"
+                android:text="Tipi"
+                android:textColor="#e9c46a"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:translationZ="90dp"
+                app:layout_constraintBottom_toTopOf="@+id/tipi_component_button"
+                app:layout_constraintEnd_toStartOf="@+id/cardImg"
+                app:layout_constraintHorizontal_bias="0.079"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.219" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/marquee_card_view"
+        android:layout_width="380dp"
+        android:layout_height="150dp"
+        app:cardBackgroundColor="#264653"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tipi_card_view"
+        app:layout_constraintVertical_bias="0.063">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/marquee_card_image"
+                android:layout_width="72dp"
+                android:layout_height="69dp"
+                android:layout_marginStart="112dp"
+                android:src="@drawable/marquee"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.697"
+                app:layout_constraintStart_toEndOf="@+id/marquee_component_button"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.506" />
+
+            <Button
+                android:id="@+id/marquee_component_button"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:padding="0dp"
+                android:text="Elements"
+                android:textSize="9sp"
+                app:backgroundTint="#2a9d8f"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/marquee_location_button"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:padding="0dp"
+                android:text="Locations"
+                android:textSize="9sp"
+                app:backgroundTint="#2a9d8f"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/marquee_component_button"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/marqueeTitle"
+                android:layout_width="118dp"
+                android:layout_height="41dp"
+                android:fontFamily="cursive"
+                android:text="Marquee"
+                android:textColor="#e9c46a"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:translationZ="90dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/marquee_card_image"
+                app:layout_constraintHorizontal_bias="0.062"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.146" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/addStruct"
+        android:layout_width="125dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="32dp"
+        android:padding="0dp"
+        android:text="Add structure +"
+        android:textSize="10sp"
+        app:backgroundTint="#2a9d8f"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.973"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/marquee_card_view"
+        app:layout_constraintVertical_bias="0.061" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:fontFamily="serif-monospace"
+        android:lineSpacingExtra="20sp"
+        android:text="Structure Information"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="23sp"
+        android:textStyle="bold|italic"
+        android:typeface="monospace"
+        app:layout_constraintBottom_toTopOf="@+id/tipi_card_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

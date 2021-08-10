@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "698669364829",
+    "project_id": "tipi-management",
+    "storage_bucket": "tipi-management.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698669364829:android:493cfd1c50a64e31227fb4",
+        "android_client_info": {
+          "package_name": "com.example.tipi_stock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "698669364829-kov62mr6c9lq5hm477kp81hgodtf9mnb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRqKuxrer9xPPl1btlF019htvswprO6Vk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "698669364829-kov62mr6c9lq5hm477kp81hgodtf9mnb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
