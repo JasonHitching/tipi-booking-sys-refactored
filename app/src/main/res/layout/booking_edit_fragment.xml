@@ -17,14 +17,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/booking_edit_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Edit Booking"
             android:textSize="25sp"/>
 
         <View
-            android:id="@+id/edit_divider"
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:background="?android:attr/listDivider" />
@@ -37,7 +35,6 @@
             android:hint="Structure type">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/structure_type_edit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -48,7 +45,6 @@
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/desired_edit_date"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="330dp"
                 android:layout_height="match_parent">
@@ -62,8 +58,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageButton
-                android:id="@+id/calander_edit_button"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
@@ -77,7 +72,6 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/booking_cost_edit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Booking cost" />
@@ -90,7 +84,6 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/num_days_edit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Number of days" />
@@ -98,7 +91,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/customer_edit_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Customer Details"
@@ -106,17 +98,9 @@
             android:textSize="25sp"/>
 
         <View
-            android:id="@+id/customer_edit_divider"
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:background="?android:attr/listDivider" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-        </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -125,7 +109,6 @@
             android:hint="First line of address">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/address_edit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -143,7 +126,6 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/house_number_text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
@@ -156,7 +138,6 @@
                 android:layout_marginStart="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/postcode_text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Postcode" />

@@ -109,8 +109,8 @@ public class SharedBookingViewModel extends AndroidViewModel {
         int numOfDays;
 
         try {
-            costVal = new Double(cost);
-            numOfDays = new Integer(noOfDays);
+            costVal = Double.valueOf(cost);
+            numOfDays = Integer.valueOf(noOfDays);
         } catch (NumberFormatException ex) {
             return "Invalid number input, check cost and days";
         }

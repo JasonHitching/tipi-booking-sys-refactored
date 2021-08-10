@@ -165,7 +165,7 @@ public class BookingFormFragment extends Fragment {
 
     public boolean checkDoubleNumeric(String input) {
         try {
-            Double inputDouble = new Double(input);
+            Double inputDouble = Double.valueOf(input);
             return true;
         } catch (NumberFormatException ex) {
             return false;
@@ -174,7 +174,7 @@ public class BookingFormFragment extends Fragment {
 
     public boolean checkIntegerNumeric(String input) {
         try {
-            Integer inputInteger = new Integer(input);
+            Integer inputInteger = Integer.valueOf(input);
             return true;
         } catch (NumberFormatException ex) {
             return false;

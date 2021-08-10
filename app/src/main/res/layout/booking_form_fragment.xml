@@ -17,14 +17,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/booking_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Booking Details"
             android:textSize="25sp"/>
 
         <View
-            android:id="@+id/booking_divider"
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:background="?android:attr/listDivider" />
@@ -63,7 +61,7 @@
 
             <ImageButton
                 android:id="@+id/calander_button"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
@@ -98,7 +96,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/customer_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Customer Details"
@@ -106,7 +103,6 @@
             android:textSize="25sp"/>
 
         <View
-            android:id="@+id/customer_divider"
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:background="?android:attr/listDivider" />

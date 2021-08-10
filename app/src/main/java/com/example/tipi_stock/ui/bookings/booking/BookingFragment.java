@@ -9,6 +9,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -63,6 +64,7 @@ public class BookingFragment extends Fragment implements BookingAdapter.OnBookin
         return rootView;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         bookingRecycler = rootView.findViewById(R.id.booking_recycler);
@@ -114,7 +116,6 @@ public class BookingFragment extends Fragment implements BookingAdapter.OnBookin
      */
     @Override
     public void onBookingClicked(int position) {
-        Log.d(TAG, "onBookingClicked: " + position);
         dataBundle.clear();
         dataBundle.putInt("position", position);
         dataBundle.putString("type", "edit");

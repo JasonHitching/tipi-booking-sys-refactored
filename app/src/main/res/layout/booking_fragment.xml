@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/booking_fragment"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="?attr/actionBarSize"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F9F9F9"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -43,7 +41,4 @@
         android:contentDescription="new booking"
         app:srcCompat="@android:drawable/ic_input_add" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

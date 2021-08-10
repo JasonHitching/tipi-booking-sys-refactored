@@ -46,7 +46,5 @@ public class BookingEditFragment extends Fragment {
             booking.setStructureType("STRUCTTTTTT");
             bookingViewModel.updateBooking(booking);
         });
-
-        Log.d(TAG, "onViewCreated: " + getArguments().getInt("position"));
     }
 }

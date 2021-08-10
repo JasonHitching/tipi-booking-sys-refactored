@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ced4da">
+    >
 
     <androidx.cardview.widget.CardView
         android:id="@+id/tipi_card_view"
@@ -52,7 +52,6 @@
                 app:layout_constraintVertical_bias="1.0" />
 
             <Button
-                android:id="@+id/tipi_location_button"
                 android:layout_width="80dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="10dp"
@@ -67,7 +66,6 @@
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
-                android:id="@+id/tipiTitle"
                 android:layout_width="51dp"
                 android:layout_height="42dp"
                 android:fontFamily="cursive"
@@ -132,7 +130,6 @@
                 app:layout_constraintVertical_bias="1.0" />
 
             <Button
-                android:id="@+id/marquee_location_button"
                 android:layout_width="80dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="10dp"
@@ -147,7 +144,6 @@
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
-                android:id="@+id/marqueeTitle"
                 android:layout_width="118dp"
                 android:layout_height="41dp"
                 android:fontFamily="cursive"
@@ -167,7 +163,6 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/addStruct"
         android:layout_width="125dp"
         android:layout_height="35dp"
         android:layout_marginBottom="32dp"
@@ -184,7 +179,6 @@
         app:layout_constraintVertical_bias="0.061" />
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
