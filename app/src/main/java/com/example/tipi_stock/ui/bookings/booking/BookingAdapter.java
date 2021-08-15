@@ -29,8 +29,8 @@ import java.util.List;
 public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHolder> {
 
     private List<Booking> bookingData;
-    private LayoutInflater layoutInflater;
-    private OnBookingClickListener onBookingClickListener;
+    private final LayoutInflater layoutInflater;
+    private final OnBookingClickListener onBookingClickListener;
 
     public BookingAdapter(Context context, OnBookingClickListener onBookingClickListener) {
         // Create a layout inflater from the instantiating fragments context
@@ -47,21 +47,19 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
      */
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public final ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = layoutInflater.inflate(
                 R.layout.booking_card_view, parent, false);
-        ViewHolder holder = new ViewHolder(itemView, onBookingClickListener );
-        return holder;
+        return new ViewHolder(itemView, onBookingClickListener );
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BookingAdapter.ViewHolder cardHolder, int position) {
+    public final void onBindViewHolder(@NonNull BookingAdapter.ViewHolder cardHolder, int position) {
         // If the booking data exists
         if (bookingData != null ) {
             cardHolder.setRowData(bookingData.get(position));
-        } else {
-            // Maybe try display "no bookings" ??
-        }
+        }  // Maybe try display "no bookings" ??
+
 
         // Bind the current ViewHolder with an on click listener that removes the item
         cardHolder.binButton.setOnClickListener(view -> {
@@ -89,7 +87,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
      * @return size of dataset
      */
     @Override
-    public int getItemCount() {
+    public final int getItemCount() {
         // initially booking data will be null until it updates from the database
         if (bookingData != null) {
             return bookingData.size();
@@ -99,7 +97,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     }
 
     // Method called when the live data in room database changes
-    public void setBookings(List<Booking> currentBookings) {
+    public final void setBookings(List<Booking> currentBookings) {
         bookingData = currentBookings;
         notifyDataSetChanged();
     }
@@ -111,10 +109,15 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
      * https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.ViewHolder
      */
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        OnBookingClickListener bookingsClickListener;
+        final OnBookingClickListener bookingsClickListener;
 
-        TextView bookingTextView, customerTextView, customerAddText, dateStartTextView, dateEndTextView;
-        ImageButton binButton, modifyButton;
+        final TextView bookingTextView;
+        final TextView customerTextView;
+        final TextView customerAddText;
+        final TextView dateStartTextView;
+        TextView dateEndTextView;
+        final ImageButton binButton;
+        ImageButton modifyButton;
 
         /**
          * ViewHolder constructor
@@ -134,7 +137,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         }
 
         @Override
-        public void onClick(View view) {
+        public final void onClick(View view) {
             bookingsClickListener.onBookingClicked(getAbsoluteAdapterPosition());
         }
 
@@ -142,7 +145,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
          * Set the booking item data
          * @param booking booking object passed when a ViewHolder binds
          */
-        public void setRowData(Booking booking) {
+        public final void setRowData(Booking booking) {
             // Set the text of all required views
             bookingTextView.setText(booking.getStructureType());
             customerTextView.setText("Customer name: " + booking.getCustomerFirstName() +

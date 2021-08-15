@@ -11,42 +11,39 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.tipi_stock.MainActivity;
 import com.example.tipi_stock.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Objects;
 
 public class LoginFragment extends Fragment {
 
     View rootView;
     private FirebaseAuth firebaseAuthenticator;
     TextInputLayout emailTextLayout, passwordTextLayout;
-    private Button loginButton, registerButton;
 
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable @org.jetbrains.annotations.Nullable ViewGroup container,
-                             @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+    public final View onCreateView(@NonNull LayoutInflater inflater,
+                                   @Nullable @org.jetbrains.annotations.Nullable ViewGroup container,
+                                   @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         rootView = inflater.inflate(R.layout.login_fragment, null);
 
 
         Handler handle = new Handler();
         handle.postDelayed(() -> {
-            BottomNavigationView navigationView = container.getRootView().findViewById(R.id.nav_view);
+            BottomNavigationView navigationView = Objects.requireNonNull(container).getRootView().findViewById(R.id.nav_view);
             navigationView.setVisibility(View.GONE);
         }, 0);
 
@@ -55,23 +52,21 @@ public class LoginFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+    public final void onViewCreated(@NonNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         firebaseAuthenticator = FirebaseAuth.getInstance();
-        loginButton = rootView.findViewById(R.id.login_button);
-        registerButton = rootView.findViewById(R.id.register_button);
+        Button loginButton = rootView.findViewById(R.id.login_button);
+        Button registerButton = rootView.findViewById(R.id.register_button);
         emailTextLayout = rootView.findViewById(R.id.login_email_text);
         passwordTextLayout = rootView.findViewById(R.id.password_text_field);
 
         // On click listener for the register button
-        registerButton.setOnClickListener(registerView -> {
-            NavHostFragment.findNavController(this).navigate(
-                    R.id.action_loginFragment_to_registerFragment);
-        });
+        registerButton.setOnClickListener(registerView -> NavHostFragment.findNavController(this).navigate(
+                R.id.action_loginFragment_to_registerFragment));
 
         // On click listener for the login button
         loginButton.setOnClickListener(loginView -> {
-            String passwordText = passwordTextLayout.getEditText().getText().toString();
-            String emailText = emailTextLayout.getEditText().getText().toString();
+            String passwordText = Objects.requireNonNull(passwordTextLayout.getEditText()).getText().toString();
+            String emailText = Objects.requireNonNull(emailTextLayout.getEditText()).getText().toString();
             boolean validInput = true;
             passwordTextLayout.setError("");
             emailTextLayout.setError("");
@@ -94,14 +89,14 @@ public class LoginFragment extends Fragment {
                 validInput = false;
             }
 
-            if (validInput == true) {
+            if (validInput) {
                 userSignIn(emailText, passwordText);
             }
         });
     }
 
     @Override
-    public void onResume() {
+    public final void onResume() {
         super.onResume();
         MainActivity mainActivity = (MainActivity) getActivity();
         if (mainActivity != null) {
@@ -110,7 +105,7 @@ public class LoginFragment extends Fragment {
     }
 
     @Override
-    public void onStop() {
+    public final void onStop() {
         super.onStop();
         MainActivity mainActivity = (MainActivity) getActivity();
         if (mainActivity != null) {

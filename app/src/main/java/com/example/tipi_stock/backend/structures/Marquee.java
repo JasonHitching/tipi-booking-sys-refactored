@@ -33,7 +33,7 @@ public class Marquee {
      * Leg quantity accessor
      * @return leg quantity per Marquee
      */
-    public int getLegQuantity() {
+    public final int getLegQuantity() {
         return legQuantity;
     }
 
@@ -41,7 +41,7 @@ public class Marquee {
      * Medium ground stake quantity accessor
      * @return medium ground stake quantity per Marquee
      */
-    public int getMediumGroundStakeQuantity() {
+    public final int getMediumGroundStakeQuantity() {
         return mediumGroundStakeQuantity;
     }
 
@@ -49,7 +49,7 @@ public class Marquee {
      * Large ground stake quantity accessor
      * @return large ground stake quantity per Marquee
      */
-    public int getLargeGroundStakeQuantity() {
+    public final int getLargeGroundStakeQuantity() {
         return largeGroundStakeQuantity;
     }
 
@@ -57,7 +57,7 @@ public class Marquee {
      * Fairy light quantity accessor
      * @return fairy light quantity per Marquee
      */
-    public int getFairyLightQuantity() {
+    public final int getFairyLightQuantity() {
         return fairyLightQuantity;
     }
 
@@ -65,7 +65,7 @@ public class Marquee {
      * Clevis pin quantity accessor
      * @return clevis pin quantity per Marquee
      */
-    public int getClevisPinsQuantity() {
+    public final int getClevisPinsQuantity() {
         return clevisPinsQuantity;
     }
 
@@ -73,7 +73,7 @@ public class Marquee {
      * Components array accessor
      * @return components array
      */
-    public String[] getComponents() {
+    public final String[] getComponents() {
         return components;
     }
 
@@ -81,7 +81,7 @@ public class Marquee {
      * Center leg quantity accessor
      * @return center leg quantity per Marquee
      */
-    public int getCenterLegQuantity() {
+    public final int getCenterLegQuantity() {
         return centerLegQuantity;
     }
 
@@ -93,7 +93,7 @@ public class Marquee {
      * @return boolean value representing whether the two objects are equal
      */
     @Override
-    public boolean equals(@Nullable @org.jetbrains.annotations.Nullable Object object) {
+    public final boolean equals(@Nullable @org.jetbrains.annotations.Nullable Object object) {
         // If the object isn't even an instance of Tipi return false immediately
         if (!(object instanceof Marquee)) {
             return false;
@@ -117,7 +117,7 @@ public class Marquee {
      * @return hash of all object properties
      */
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return Objects.hash(
                 this.components,
                 this.clevisPinsQuantity,

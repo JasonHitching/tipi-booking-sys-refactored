@@ -37,5 +37,5 @@ public interface BookingDao {
     void deleteAllBookings();
 
     @Update(entity = Booking.class)
-    public  void updateBooking(Booking booking);
+    void updateBooking(Booking booking);
 }

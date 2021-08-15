@@ -2,17 +2,13 @@ package com.example.tipi_stock.ui.bookings;
 
 import android.app.Application;
 
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.tipi_stock.backend.bookings.data.Booking;
 import com.example.tipi_stock.backend.bookings.data.BookingRepository;
-import com.example.tipi_stock.ui.bookings.booking.BookingAdapter;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,10 +22,10 @@ import java.util.Objects;
  */
 public class SharedBookingViewModel extends AndroidViewModel {
 
-    private BookingRepository roomRepo;
+    private final BookingRepository roomRepo;
 
     // Current live data of the Booking entities stored in the Room database
-    private LiveData<List<Booking>> currentBookings;
+    private final LiveData<List<Booking>> currentBookings;
 
 
     public SharedBookingViewModel(Application app) {
@@ -38,20 +34,20 @@ public class SharedBookingViewModel extends AndroidViewModel {
         currentBookings = roomRepo.getAllBookings();
     }
 
-    public LiveData<List<Booking>> getAllBookings() {
+    public final LiveData<List<Booking>> getAllBookings() {
         return currentBookings;
     }
 
-    public Booking getBooking(int pos) {
-        return currentBookings.getValue().get(pos);
+    public final Booking getBooking(int pos) {
+        return Objects.requireNonNull(currentBookings.getValue()).get(pos);
     }
 
     /**
      * Sort recycler view cards by date in ascending order
      */
-    public void sortDateAscending() {
+    public final void sortDateAscending() {
         // obtain booking list size for the loop iterations
-        int bookingsSize = currentBookings.getValue().size();
+        int bookingsSize = Objects.requireNonNull(currentBookings.getValue()).size();
 
         for (int i = 0; i < bookingsSize - 1; i++) {
             for (int j = 0; j < bookingsSize - i - 1; j++) {
@@ -71,9 +67,9 @@ public class SharedBookingViewModel extends AndroidViewModel {
     /**
      * Sort the recycler view cards by date in descending order
      */
-    public void sortDateDescending() {
+    public final void sortDateDescending() {
         // obtain booking list size for the loop iterations
-        int bookingsSize = currentBookings.getValue().size();
+        int bookingsSize = Objects.requireNonNull(currentBookings.getValue()).size();
 
         for (int i = 0; i < bookingsSize - 1; i++) {
             for (int j = 0; j < bookingsSize - i - 1; j++) {
@@ -102,15 +98,15 @@ public class SharedBookingViewModel extends AndroidViewModel {
      * @param startDate  Date that the booking starts
      * @param noOfDays   Number of days the structure will be booked for
      */
-    public String createBooking(String structType, String firstName, String lastName, String address,
-                                String cost, LocalDate startDate, String noOfDays) {
+    public final String createBooking(String structType, String firstName, String lastName, String address,
+                                      String cost, LocalDate startDate, String noOfDays) {
 
         double costVal;
         int numOfDays;
 
         try {
-            costVal = Double.valueOf(cost);
-            numOfDays = Integer.valueOf(noOfDays);
+            costVal = Double.parseDouble(cost);
+            numOfDays = Integer.parseInt(noOfDays);
         } catch (NumberFormatException ex) {
             return "Invalid number input, check cost and days";
         }
@@ -144,7 +140,7 @@ public class SharedBookingViewModel extends AndroidViewModel {
      * @param structureName
      * @return
      */
-    public boolean checkExisting(LocalDate startDate, String structureName) {
+    public final boolean checkExisting(LocalDate startDate, String structureName) {
         // Check existing bookings to see if they match desired booking
         for (Booking booking : Objects.requireNonNull(currentBookings.getValue())) {
             if (booking.getBookingStartDate().equals(startDate)
@@ -155,7 +151,7 @@ public class SharedBookingViewModel extends AndroidViewModel {
         return false;
     }
 
-    public void updateBooking(Booking booking) {
+    public final void updateBooking(Booking booking) {
         roomRepo.updateBooking(booking);
     }
 }

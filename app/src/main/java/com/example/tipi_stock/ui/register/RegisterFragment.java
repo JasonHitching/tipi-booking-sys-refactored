@@ -1,7 +1,5 @@
 package com.example.tipi_stock.ui.register;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,15 +13,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.tipi_stock.MainActivity;
 import com.example.tipi_stock.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Objects;
 
 /**
  *
@@ -31,31 +28,30 @@ import com.google.firebase.auth.FirebaseUser;
 public class RegisterFragment extends Fragment {
 
     private FirebaseAuth authenticator;
-    private Button registerButton;
     private TextInputLayout emailTextInput, passwordTextInput, confirmPasswordTextInput;
     private View rootView;
 
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public final View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                                   @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.register_fragment, container, false);
         return rootView;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        registerButton = rootView.findViewById(R.id.register_button);
+    public final void onViewCreated(@NonNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        Button registerButton1 = rootView.findViewById(R.id.register_button);
         emailTextInput = rootView.findViewById(R.id.email_text_field);
         passwordTextInput = rootView.findViewById(R.id.password_text_field);
         confirmPasswordTextInput = rootView.findViewById(R.id.check_password_text_field);
 
         authenticator = FirebaseAuth.getInstance();
 
-        registerButton.setOnClickListener( registerButton -> {
-            String emailText = emailTextInput.getEditText().getText().toString();
-            String passwordText = passwordTextInput.getEditText().getText().toString();
-            String checkPasswordText = confirmPasswordTextInput.getEditText().getText().toString();
+        registerButton1.setOnClickListener(registerButton -> {
+            String emailText = Objects.requireNonNull(emailTextInput.getEditText()).getText().toString();
+            String passwordText = Objects.requireNonNull(passwordTextInput.getEditText()).getText().toString();
+            String checkPasswordText = Objects.requireNonNull(confirmPasswordTextInput.getEditText()).getText().toString();
 
             if (!checkFormInput(emailText, passwordText, checkPasswordText)) {
                 Toast.makeText(getActivity(), "Register error, check fields.",
@@ -67,7 +63,7 @@ public class RegisterFragment extends Fragment {
 
     }
 
-    public boolean checkFormInput(String emailText, String passwordText, String checkPasswordText) {
+    public final boolean checkFormInput(String emailText, String passwordText, String checkPasswordText) {
         boolean isPopulated = true;
         if (emailText.isEmpty()) {
             emailTextInput.setError("Field required!");

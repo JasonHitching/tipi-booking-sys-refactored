@@ -15,11 +15,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.tipi_stock.R;
-import com.example.tipi_stock.backend.structures.Tipi;
-import com.example.tipi_stock.ui.bookings.SharedBookingViewModel;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-
-import java.util.Arrays;
 
 public class InventoryFragment extends Fragment {
 
@@ -34,9 +29,9 @@ public class InventoryFragment extends Fragment {
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable @org.jetbrains.annotations.Nullable ViewGroup container,
-                             @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+    public final View onCreateView(@NonNull LayoutInflater inflater,
+                                   @Nullable @org.jetbrains.annotations.Nullable ViewGroup container,
+                                   @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         rootView = inflater.inflate(R.layout.inventory_fragment, null);
@@ -49,17 +44,15 @@ public class InventoryFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view,
-                              @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+    public final void onViewCreated(@NonNull View view,
+                                    @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         Context viewContext = view.getRootView().getContext();
 
         tipiComponentButton.setOnClickListener(tipiComponentButton -> {
             AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(viewContext);
             dialogBuilder.setMultiChoiceItems(inventoryViewModel.getTipiObject().getComponents(),
                     inventoryViewModel.getBoolCheckedArray(),
-                    (DialogInterface.OnMultiChoiceClickListener) (dialogInterface, i, b) -> {
-                        System.out.println("Selected");
-            });
+                    (DialogInterface.OnMultiChoiceClickListener) (dialogInterface, i, b) -> System.out.println("Selected"));
             dialogBuilder.setPositiveButton("Ok", null);
 
             AlertDialog newDialog = dialogBuilder.create();

@@ -42,67 +42,67 @@ public class Booking {
         this.numberOfDays = numberOfDays;
     }
 
-    public int getId() {
+    public final int getId() {
         return id;
     }
 
-    public String getStructureType() {
+    public final String getStructureType() {
         return structureType;
     }
 
-    public void setStructureType(String struct) {
+    public final void setStructureType(String struct) {
         structureType = struct;
     }
 
-    public void setCustomerAddress(String change) {
-        customerAddress = customerAddress + change;
+    public final void setCustomerAddress(String change) {
+        customerAddress += change;
     }
 
-    public String getCustomerFirstName() {
+    public final String getCustomerFirstName() {
         return customerFirstName;
     }
 
-    public String getCustomerLastName() {
+    public final String getCustomerLastName() {
         return customerLastName;
     }
 
-    public String getCustomerAddress() { return customerAddress; }
+    public final String getCustomerAddress() { return customerAddress; }
 
-    public double getCost() {
+    public final double getCost() {
         return cost;
     }
 
-    public LocalDate getBookingStartDate() {
+    public final LocalDate getBookingStartDate() {
         return bookingStartDate;
     }
 
-    public int getNumberOfDays() {
+    public final int getNumberOfDays() {
         return numberOfDays;
     }
 
-    public void setCustomerFirstName(String customerFirstName) {
+    public final void setCustomerFirstName(String customerFirstName) {
         this.customerFirstName = customerFirstName;
     }
 
-    public void setCustomerLastName(String customerLastName) {
+    public final void setCustomerLastName(String customerLastName) {
         this.customerLastName = customerLastName;
     }
 
-    public void setCost(double cost) {
+    public final void setCost(double cost) {
         this.cost = cost;
     }
 
-    public void setBookingStartDate(LocalDate bookingStartDate) {
+    public final void setBookingStartDate(LocalDate bookingStartDate) {
         this.bookingStartDate = bookingStartDate;
     }
 
-    public void setNumberOfDays(int numberOfDays) {
+    public final void setNumberOfDays(int numberOfDays) {
         this.numberOfDays = numberOfDays;
     }
 
     @NonNull
     @Override
-    public String toString() {
+    public final String toString() {
         return bookingStartDate.toString();
     }
 }

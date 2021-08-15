@@ -10,8 +10,8 @@ import java.util.List;
  * Class for interacting with the 'booking Room database'
  */
 public class BookingRepository {
-    private BookingDao bookingDao;
-    private LiveData<List<Booking>> currentBookings;
+    private final BookingDao bookingDao;
+    private final LiveData<List<Booking>> currentBookings;
 
     public BookingRepository(Application app) {
         BookingDatabase database = BookingDatabase.getDbInstance(app);
@@ -19,7 +19,7 @@ public class BookingRepository {
         currentBookings = bookingDao.getAllBookings();
     }
 
-    public LiveData<List<Booking>> getAllBookings() {
+    public final LiveData<List<Booking>> getAllBookings() {
         return currentBookings;
     }
 
@@ -27,11 +27,11 @@ public class BookingRepository {
      * Insert a new booking into the database
      * @param newBooking booking object
      */
-    public void insertBooking(Booking newBooking) {
+    public final void insertBooking(Booking newBooking) {
         BookingDatabase.databaseExecutor.execute(() -> bookingDao.insertBooking(newBooking));
     }
 
-    public void updateBooking(Booking updatedBooking) {
+    public final void updateBooking(Booking updatedBooking) {
         BookingDatabase.databaseExecutor.execute(() -> bookingDao.updateBooking(updatedBooking));
 
     }

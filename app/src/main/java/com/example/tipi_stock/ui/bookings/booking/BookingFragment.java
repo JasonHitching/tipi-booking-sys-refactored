@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,7 @@ import com.example.tipi_stock.ui.bookings.SharedBookingViewModel;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import static android.content.ContentValues.TAG;
+import java.util.Objects;
 
 /**
  * Booking fragment displays the booking recycler and existing bookings from the Room database
@@ -35,12 +34,10 @@ import static android.content.ContentValues.TAG;
 public class BookingFragment extends Fragment implements BookingAdapter.OnBookingClickListener {
 
     private static BookingAdapter bookingAdapter;
-    private static RecyclerView bookingRecycler;
     private SharedBookingViewModel sharedBookingViewModel;
     private Button sortButton;
     private View rootView;
-    private MaterialToolbar topBar;
-    Bundle dataBundle;
+    final Bundle dataBundle;
 
 
     // Required empty constructor
@@ -51,24 +48,24 @@ public class BookingFragment extends Fragment implements BookingAdapter.OnBookin
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable @org.jetbrains.annotations.Nullable ViewGroup container,
-                             @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+    public final View onCreateView(@NonNull LayoutInflater inflater,
+                                   @Nullable @org.jetbrains.annotations.Nullable ViewGroup container,
+                                   @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         rootView = inflater.inflate(R.layout.booking_fragment, null);
         sharedBookingViewModel = new ViewModelProvider(this).get(SharedBookingViewModel.class);
 
         // Hide default action bar for this fragment
-        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).getSupportActionBar()).hide();
 
         return rootView;
     }
 
     @SuppressLint("NonConstantResourceId")
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        bookingRecycler = rootView.findViewById(R.id.booking_recycler);
-        topBar = rootView.findViewById(R.id.top_app_bar);
+    public final void onViewCreated(@NonNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        RecyclerView bookingRecycler = rootView.findViewById(R.id.booking_recycler);
+        MaterialToolbar topBar = rootView.findViewById(R.id.top_app_bar);
         bookingAdapter = new BookingAdapter(getActivity(), this);
         bookingRecycler.setHasFixedSize(true);
         bookingRecycler.setAdapter(bookingAdapter);
@@ -115,7 +112,7 @@ public class BookingFragment extends Fragment implements BookingAdapter.OnBookin
      * @param position
      */
     @Override
-    public void onBookingClicked(int position) {
+    public final void onBookingClicked(int position) {
         dataBundle.clear();
         dataBundle.putInt("position", position);
         dataBundle.putString("type", "edit");

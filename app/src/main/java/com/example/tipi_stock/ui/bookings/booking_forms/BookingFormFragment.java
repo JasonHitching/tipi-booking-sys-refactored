@@ -2,7 +2,6 @@ package com.example.tipi_stock.ui.bookings.booking_forms;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,7 +39,6 @@ import static android.content.ContentValues.TAG;
  */
 public class BookingFormFragment extends Fragment {
 
-    private View rootView;
     private MaterialDatePicker bookingDateSelector;
     private ImageButton calendarButton;
     private TextInputEditText dateText, structureText, firstNameText, lastNameText, costText, daysText,
@@ -48,17 +46,15 @@ public class BookingFormFragment extends Fragment {
     private TextInputLayout dateTextLayout;
     private SharedBookingViewModel bookingViewModel;
     private Button submitButton;
-    private String editAddFlag;
     private Booking selectedBooking;
 
-    @Nullable
-    @org.jetbrains.annotations.Nullable
+    @NonNull
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable @org.jetbrains.annotations.Nullable ViewGroup container,
-                             @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+    public final View onCreateView(@NonNull LayoutInflater inflater,
+                                   @Nullable @org.jetbrains.annotations.Nullable ViewGroup container,
+                                   @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        rootView = inflater.inflate(R.layout.booking_form_fragment, null);
+        View rootView = inflater.inflate(R.layout.booking_form_fragment, null);
 
         bookingDateSelector = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Select booking date")
@@ -85,24 +81,24 @@ public class BookingFormFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view,
-                              @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        editAddFlag = getArguments().get("type").toString();
+    public final void onViewCreated(@NonNull View view,
+                                    @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        String editAddFlag = Objects.requireNonNull(getArguments()).get("type").toString();
 
         // If currently the edit flag is in 'edit' mode
         if (editAddFlag.equals("edit")) {
             editFormData(getArguments().getInt("position"));
             submitButton.setOnClickListener(view1 -> {
-                String hireDays = daysText.getText().toString();
-                String cost = costText.getText().toString();
+                String hireDays = Objects.requireNonNull(daysText.getText()).toString();
+                String cost = Objects.requireNonNull(costText.getText()).toString();
 
                 if (checkDoubleNumeric(cost) && checkIntegerNumeric(hireDays)) {
-                    selectedBooking.setStructureType(structureText.getText().toString());
+                    selectedBooking.setStructureType(Objects.requireNonNull(structureText.getText()).toString());
                     selectedBooking.setCost(Double.parseDouble(costText.getText().toString()));
                     selectedBooking.setNumberOfDays(Integer.parseInt(daysText.getText().toString()));
-                    selectedBooking.setCustomerFirstName(firstNameText.getText().toString());
-                    selectedBooking.setCustomerLastName(lastNameText.getText().toString());
-                    selectedBooking.setCustomerAddress(firstLineAddress.getText().toString());
+                    selectedBooking.setCustomerFirstName(Objects.requireNonNull(firstNameText.getText()).toString());
+                    selectedBooking.setCustomerLastName(Objects.requireNonNull(lastNameText.getText()).toString());
+                    selectedBooking.setCustomerAddress(Objects.requireNonNull(firstLineAddress.getText()).toString());
                     bookingViewModel.updateBooking(selectedBooking);
                     NavHostFragment.findNavController(this).popBackStack();
                 } else {
@@ -118,7 +114,7 @@ public class BookingFormFragment extends Fragment {
 
                 if (checkEmpty()) {
                     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMM-d-yyyy");
-                    String replaceCommas = dateText.getText().toString().replaceAll(", ", " ");
+                    String replaceCommas = Objects.requireNonNull(dateText.getText()).toString().replaceAll(", ", " ");
 
                     String result = bookingViewModel.createBooking(
                             Objects.requireNonNull(structureText.getText()).toString(),
@@ -149,10 +145,8 @@ public class BookingFormFragment extends Fragment {
         }
 
         // Display MaterialDatePicker instance when image button clicked
-        calendarButton.setOnClickListener(dateComp -> {
-            bookingDateSelector.show(requireActivity().getSupportFragmentManager(),
-                    "DATE_PICKER");
-        });
+        calendarButton.setOnClickListener(dateComp -> bookingDateSelector.show(requireActivity().getSupportFragmentManager(),
+                "DATE_PICKER"));
 
         // Respond to user selected date input
         bookingDateSelector.addOnPositiveButtonClickListener(selection -> {
@@ -163,7 +157,7 @@ public class BookingFormFragment extends Fragment {
 
     }
 
-    public boolean checkDoubleNumeric(String input) {
+    public final boolean checkDoubleNumeric(String input) {
         try {
             Double inputDouble = Double.valueOf(input);
             return true;
@@ -172,7 +166,7 @@ public class BookingFormFragment extends Fragment {
         }
     }
 
-    public boolean checkIntegerNumeric(String input) {
+    public final boolean checkIntegerNumeric(String input) {
         try {
             Integer inputInteger = Integer.valueOf(input);
             return true;
@@ -181,7 +175,7 @@ public class BookingFormFragment extends Fragment {
         }
     }
 
-    public void editFormData(int arrayPos) {
+    public final void editFormData(int arrayPos) {
         selectedBooking = bookingViewModel.getBooking(arrayPos);
         structureText.setText(selectedBooking.getStructureType());
         dateText.setText(selectedBooking.getBookingStartDate().toString());
@@ -192,39 +186,39 @@ public class BookingFormFragment extends Fragment {
         firstLineAddress.setText(selectedBooking.getCustomerAddress());
     }
 
-    public boolean checkEmpty() {
+    public final boolean checkEmpty() {
         boolean notEmpty = true;
-        if (structureText.getText().toString().isEmpty()) {
+        if (Objects.requireNonNull(structureText.getText()).toString().isEmpty()) {
             structureText.setError("Field requires input!");
             notEmpty = false;
         }
 
-        if (dateText.getText().toString().isEmpty()) {
+        if (Objects.requireNonNull(dateText.getText()).toString().isEmpty()) {
             dateText.setError("Field requires input");
             notEmpty = false;
         }
 
-        if (costText.getText().toString().isEmpty()) {
+        if (Objects.requireNonNull(costText.getText()).toString().isEmpty()) {
             costText.setError("Field requires input");
             notEmpty = false;
         }
 
-        if (daysText.getText().toString().isEmpty()) {
+        if (Objects.requireNonNull(daysText.getText()).toString().isEmpty()) {
             daysText.setError("Field requires input");
             notEmpty = false;
         }
 
-        if (firstNameText.getText().toString().isEmpty()) {
+        if (Objects.requireNonNull(firstNameText.getText()).toString().isEmpty()) {
             firstNameText.setError("Field requires input");
             notEmpty = false;
         }
 
-        if (lastNameText.getText().toString().isEmpty()) {
+        if (Objects.requireNonNull(lastNameText.getText()).toString().isEmpty()) {
             lastNameText.setError("Field requires input!");
             notEmpty = false;
         }
 
-        if (firstLineAddress.getText().toString().isEmpty()){
+        if (Objects.requireNonNull(firstLineAddress.getText()).toString().isEmpty()){
             firstLineAddress.setError("Field requires input");
             notEmpty = false;
         }

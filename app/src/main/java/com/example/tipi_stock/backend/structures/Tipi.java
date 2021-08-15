@@ -11,12 +11,12 @@ import java.util.Objects;
  */
 public class Tipi {
 
-    private int legQuantity;
-    private int mediumGroundStakeQuantity;
-    private int largeGroundStakeQuantity;
-    private int fairyLightQuantity;
-    private int clevisPinsQuantity;
-    private String[] components;
+    private final int legQuantity;
+    private final int mediumGroundStakeQuantity;
+    private final int largeGroundStakeQuantity;
+    private final int fairyLightQuantity;
+    private final int clevisPinsQuantity;
+    private final String[] components;
 
     public Tipi() {
         components = new String[]{"Canvas", "8m Legs", "Large Ground Stakes", "Fairy Lights",
@@ -33,7 +33,7 @@ public class Tipi {
      *
      * @return leg quantity per Tipi
      */
-    public int getLegQuantity() {
+    public final int getLegQuantity() {
         return legQuantity;
     }
 
@@ -42,7 +42,7 @@ public class Tipi {
      *
      * @return medium ground stake quantity per Tipi
      */
-    public int getMediumGroundStakeQuantity() {
+    public final int getMediumGroundStakeQuantity() {
         return mediumGroundStakeQuantity;
     }
 
@@ -51,7 +51,7 @@ public class Tipi {
      *
      * @return large ground stake quantity per Tipi
      */
-    public int getLargeGroundStakeQuantity() {
+    public final int getLargeGroundStakeQuantity() {
         return largeGroundStakeQuantity;
     }
 
@@ -60,7 +60,7 @@ public class Tipi {
      *
      * @return fairy light quantity per Tipi
      */
-    public int getFairyLightQuantity() {
+    public final int getFairyLightQuantity() {
         return fairyLightQuantity;
     }
 
@@ -69,7 +69,7 @@ public class Tipi {
      *
      * @return clevis pin quantity per Tipi
      */
-    public int getClevisPinsQuantity() {
+    public final int getClevisPinsQuantity() {
         return clevisPinsQuantity;
     }
 
@@ -78,7 +78,7 @@ public class Tipi {
      *
      * @return components array
      */
-    public String[] getComponents() {
+    public final String[] getComponents() {
         return components;
     }
 
@@ -90,7 +90,7 @@ public class Tipi {
      */
     @NonNull
     @Override
-    public String toString() {
+    public final String toString() {
         return "Tipi{" +
                 "legQuantity=" + legQuantity +
                 ", mediumGroundStakeQuantity=" + mediumGroundStakeQuantity +
@@ -109,7 +109,7 @@ public class Tipi {
      * @return boolean value representing whether the two objects are equal
      */
     @Override
-    public boolean equals(@Nullable @org.jetbrains.annotations.Nullable Object object) {
+    public final boolean equals(@Nullable @org.jetbrains.annotations.Nullable Object object) {
         // If the object isn't even an instance of Tipi return false immediately
         if (!(object instanceof Tipi)) {
             return false;
@@ -131,7 +131,7 @@ public class Tipi {
      * @return hash of all object properties
      */
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return Objects.hash(
                 this.components,
                 this.clevisPinsQuantity,

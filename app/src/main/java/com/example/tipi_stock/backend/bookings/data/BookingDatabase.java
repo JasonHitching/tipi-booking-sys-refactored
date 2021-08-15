@@ -6,16 +6,14 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Booking.class}, version = 7, exportSchema = true)
+@Database(entities = {Booking.class}, version = 7)
 @TypeConverters({DateConverter.class})
 public abstract class BookingDatabase extends RoomDatabase {
 
@@ -23,7 +21,7 @@ public abstract class BookingDatabase extends RoomDatabase {
 
     private static volatile BookingDatabase dbInstance;
 
-    static ExecutorService databaseExecutor =
+    static final ExecutorService databaseExecutor =
             Executors.newFixedThreadPool(4);
 
     public static BookingDatabase getDbInstance(final Context context) {
@@ -42,7 +40,7 @@ public abstract class BookingDatabase extends RoomDatabase {
         return dbInstance;
     }
 
-    private static RoomDatabase.Callback insertCallback = new RoomDatabase.Callback() {
+    private static final RoomDatabase.Callback insertCallback = new RoomDatabase.Callback() {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);

@@ -3,7 +3,6 @@ package com.example.tipi_stock.backend.bookings.data;
 import androidx.room.TypeConverter;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * Class for converting a Long value to a Date and vice versa

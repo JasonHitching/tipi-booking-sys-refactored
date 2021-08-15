@@ -11,8 +11,8 @@ import java.util.Arrays;
 
 public class InventoryViewModel extends AndroidViewModel {
 
-    private boolean[] boolCheckedArray;
-    private Tipi tipiObject;
+    private final boolean[] boolCheckedArray;
+    private final Tipi tipiObject;
 
 
     public InventoryViewModel(@NonNull Application app) {
@@ -22,11 +22,11 @@ public class InventoryViewModel extends AndroidViewModel {
         Arrays.fill(boolCheckedArray, Boolean.FALSE);
     }
 
-    public Tipi getTipiObject() {
+    public final Tipi getTipiObject() {
         return tipiObject;
     }
 
-    public boolean[] getBoolCheckedArray() {
+    public final boolean[] getBoolCheckedArray() {
         return boolCheckedArray;
     }
 }
