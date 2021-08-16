@@ -122,7 +122,7 @@ public class BookingFormFragment extends Fragment {
 
                     try {
                         costVal = Double.parseDouble(Objects.requireNonNull(costText.getText()).toString());
-                        numOfDays = Integer.parseInt(Objects.requireNonNull(daysText.getText().toString()));
+                        numOfDays = Integer.parseInt(Objects.requireNonNull(Objects.requireNonNull(daysText.getText()).toString()));
                     } catch (NumberFormatException ex) {
                         Log.d(TAG, "onViewCreated: Parse Failed");
                     }

@@ -71,7 +71,7 @@ public class Booking {
             return this;
         }
 
-        public Booking build() {
+        public final Booking build() {
             Booking newBooking = new Booking();
             newBooking.structureType = this.structureType;
             newBooking.customerFirstName = this.customerFirstName;
