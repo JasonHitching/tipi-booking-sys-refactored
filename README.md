@@ -1,3 +1,7 @@
-# tipi-stock-refactored
+# Tipi Stock Refactored
 
-Refactored using <a href="https://codebeat.co/projects/github-com-jasonhitching-tipi-stock-refactored-main"><img alt="codebeat badge" src="https://codebeat.co/badges/4dd7d473-92df-4c31-bf53-cd7e268c020d" /></a>
+<a href="https://codebeat.co/projects/github-com-jasonhitching-tipi-stock-refactored-main"><img alt="codebeat badge" src="https://codebeat.co/badges/4dd7d473-92df-4c31-bf53-cd7e268c020d" /></a> <a href="https://plugins.jetbrains.com/plugin/4594-qaplug"><img src="https://img.shields.io/badge/QAPlug-PMD%2C_Checkstyle%2C_FindBugs-2ea44f" alt="QAPlug - PMD, Checkstyle, FindBugs"></a>
+
+This repository contains a refactored version of my Masters project prototype artefact.
+
+
