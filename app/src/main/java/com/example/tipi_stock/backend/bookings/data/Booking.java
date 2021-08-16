@@ -3,10 +3,12 @@ package com.example.tipi_stock.backend.bookings.data;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * Entity model of a structure booking
@@ -148,4 +150,22 @@ public class Booking {
     public final String toString() {
         return bookingStartDate.toString();
     }
+
+    @Override
+    public final boolean equals(@Nullable @org.jetbrains.annotations.Nullable Object obj) {
+        if (!(obj instanceof Booking)) {
+            return false;
+        } else {
+            Booking tempBooking = (Booking) obj;
+
+            return Objects.equals(this.id, tempBooking.id)
+                    && Objects.equals(this.structureType, tempBooking.structureType)
+                    && Objects.equals(this.bookingStartDate, tempBooking.bookingStartDate)
+                    && Objects.equals(this.customerFirstName, tempBooking.customerFirstName)
+                    && Objects.equals(this.customerLastName, tempBooking.customerLastName)
+                    && Objects.equals(this.cost, tempBooking.cost)
+                    && Objects.equals(this.numberOfDays, tempBooking.numberOfDays);
+        }
+    }
+
 }

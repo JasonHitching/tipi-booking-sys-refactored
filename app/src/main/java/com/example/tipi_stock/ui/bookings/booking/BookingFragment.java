@@ -73,10 +73,8 @@ public class BookingFragment extends Fragment implements BookingAdapter.OnBookin
         sharedBookingViewModel = new ViewModelProvider(requireActivity()).get(SharedBookingViewModel.class);
 
 
-
         // Add a live data observer
-        sharedBookingViewModel.getAllBookings().observe(getViewLifecycleOwner(), bookings -> bookingAdapter.setBookings(bookings));
-
+        sharedBookingViewModel.getAllBookings().observe(getViewLifecycleOwner(), bookings -> bookingAdapter.setData(bookings));
         FloatingActionButton newBookingFab = rootView.findViewById(R.id.new_booking_fab);
 
         newBookingFab.setOnClickListener(thisView -> {
@@ -90,14 +88,12 @@ public class BookingFragment extends Fragment implements BookingAdapter.OnBookin
         topBar.setOnMenuItemClickListener(clickedItem -> {
             switch (clickedItem.getItemId()) {
                 case R.id.ascending_item:
-                    sharedBookingViewModel.sortDateAscending();
-                    bookingAdapter.notifyDataSetChanged();
+                    bookingAdapter.setData(sharedBookingViewModel.sortDateAscending());
                     Toast.makeText(getActivity(), "Bookings sorted date ascending!",
                             Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.descending_item:
-                    sharedBookingViewModel.sortDateDescending();
-                    bookingAdapter.notifyDataSetChanged();
+                    bookingAdapter.setData(sharedBookingViewModel.sortDateDescending());
                     Toast.makeText(getActivity(), "Bookings sorted date descending!",
                             Toast.LENGTH_SHORT).show();
                     return true;

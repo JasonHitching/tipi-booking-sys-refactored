@@ -9,11 +9,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tipi_stock.R;
 import com.example.tipi_stock.backend.bookings.data.Booking;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -35,6 +38,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     public BookingAdapter(Context context, OnBookingClickListener onBookingClickListener) {
         // Create a layout inflater from the instantiating fragments context
         layoutInflater = LayoutInflater.from(context);
+        bookingData = Collections.emptyList();
         this.onBookingClickListener = onBookingClickListener;
     }
 
@@ -70,10 +74,11 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
             AlertDialog.Builder deleteDialog = new AlertDialog.Builder(viewContext);
             deleteDialog.setMessage("Are you sure you want to delete this booking?");
             deleteDialog.setPositiveButton("Confirm", (dialogInterface, i) -> {
-                bookingData.remove(cardHolder.getAbsoluteAdapterPosition());
-                // Notify listeners (RecyclerView) of the change in data
-                notifyDataSetChanged();
+                List<Booking> newList = new ArrayList<>(bookingData);
+                newList.remove(cardHolder.getAbsoluteAdapterPosition());
+                setData(newList);
             });
+
             deleteDialog.setNegativeButton("Cancel", (dialogInterface, i) -> {
 
             });
@@ -81,6 +86,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
             deleteDialog.create().show();
         });
     }
+
 
     /**
      * Accessor for obtaining the number of elements
@@ -166,4 +172,10 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         void onBookingClicked(int position);
     }
 
+    public final void setData(List<Booking> newBookingList) {
+        BookingDiffUtil bookingDiffUtil = new BookingDiffUtil(bookingData, newBookingList);
+        DiffUtil.DiffResult diffUtilResults = DiffUtil.calculateDiff(bookingDiffUtil);
+        diffUtilResults.dispatchUpdatesTo(this);
+        bookingData = newBookingList;
+    }
 }

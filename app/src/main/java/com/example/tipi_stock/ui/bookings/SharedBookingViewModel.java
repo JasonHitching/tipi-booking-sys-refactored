@@ -43,18 +43,19 @@ public class SharedBookingViewModel extends AndroidViewModel {
         return Objects.requireNonNull(currentBookings.getValue()).get(pos);
     }
 
-    public final void sortDateAscending() {
+    public final List<Booking> sortDateAscending() {
         Objects.requireNonNull(currentBookings.getValue()).sort((booking1, booking2) ->
                 booking1.getBookingStartDate().compareTo(booking2.getBookingStartDate()));
+        return currentBookings.getValue();
     }
-
 
     /**
      * Sort the recycler view cards by date in descending order
      */
-    public final void sortDateDescending() {
+    public final List<Booking> sortDateDescending() {
         Objects.requireNonNull(currentBookings.getValue()).sort((
                 Comparator.comparing(Booking::getBookingStartDate)).reversed());
+        return currentBookings.getValue();
     }
 
     /**
