@@ -11,12 +11,12 @@ import java.time.LocalDate;
 public class DateConverter {
 
     /**
-     * Type converter for converting a timestamp to a Date object
+     * Type converter for converting a String to a Date object
      * @param stringToConvert
      * @return a new Date object
      */
     @TypeConverter
-    public static LocalDate convertFromTimestamp(String stringToConvert) {
+    public static LocalDate convertFromString(String stringToConvert) {
         if (stringToConvert == null) {
             return null;
         } else {
@@ -25,12 +25,13 @@ public class DateConverter {
     }
 
     /**
-     * Type converter for converting a date to a timestamp
-     * @param dateToConvert
-     * @return converted date
+     * Type converter for converting a date to a String for Room storage
+     *
+     * @param dateToConvert date to convert
+     * @return converted date string version of date
      */
     @TypeConverter
-    public static String convertDateToTimestamp(LocalDate dateToConvert) {
+    public static String convertDateToString(LocalDate dateToConvert) {
         if (dateToConvert == null) {
             return null;
         } else {
