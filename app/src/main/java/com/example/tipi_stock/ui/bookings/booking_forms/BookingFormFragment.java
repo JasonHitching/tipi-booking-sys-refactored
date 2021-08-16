@@ -86,8 +86,9 @@ public class BookingFormFragment extends Fragment {
         String editAddFlag = Objects.requireNonNull(getArguments()).get("type").toString();
 
         // If currently the edit flag is in 'edit' mode
-        if (editAddFlag.equals("edit")) {
+        if (Objects.requireNonNull(getArguments()).get("type").toString().equals("edit")) {
             editFormData(getArguments().getInt("position"));
+
             submitButton.setOnClickListener(view1 -> {
                 String hireDays = Objects.requireNonNull(daysText.getText()).toString();
                 String cost = Objects.requireNonNull(costText.getText()).toString();

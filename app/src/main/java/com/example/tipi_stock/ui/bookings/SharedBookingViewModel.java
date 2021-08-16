@@ -9,6 +9,7 @@ import com.example.tipi_stock.backend.bookings.data.Booking;
 import com.example.tipi_stock.backend.bookings.data.BookingRepository;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,48 +43,18 @@ public class SharedBookingViewModel extends AndroidViewModel {
         return Objects.requireNonNull(currentBookings.getValue()).get(pos);
     }
 
-    /**
-     * Sort recycler view cards by date in ascending order
-     */
     public final void sortDateAscending() {
-        // obtain booking list size for the loop iterations
-        int bookingsSize = Objects.requireNonNull(currentBookings.getValue()).size();
-
-        for (int i = 0; i < bookingsSize - 1; i++) {
-            for (int j = 0; j < bookingsSize - i - 1; j++) {
-                LocalDate startDate1 = currentBookings.getValue().get(j).getBookingStartDate();
-                LocalDate startDate2 = currentBookings.getValue().get(j + 1).getBookingStartDate();
-                if (startDate1.isAfter(startDate2)) {
-                    Booking tempBooking = currentBookings.getValue().get(j);
-                    // Replace positions
-                    currentBookings.getValue().set(j, currentBookings.getValue().get(j + 1));
-                    currentBookings.getValue().set(j + 1, tempBooking);
-                }
-            }
-        }
-        currentBookings.getValue().get(0).customerFirstName = "";
+        Objects.requireNonNull(currentBookings.getValue()).sort((booking1, booking2) ->
+                booking1.getBookingStartDate().compareTo(booking2.getBookingStartDate()));
     }
+
 
     /**
      * Sort the recycler view cards by date in descending order
      */
     public final void sortDateDescending() {
-        // obtain booking list size for the loop iterations
-        int bookingsSize = Objects.requireNonNull(currentBookings.getValue()).size();
-
-        for (int i = 0; i < bookingsSize - 1; i++) {
-            for (int j = 0; j < bookingsSize - i - 1; j++) {
-                LocalDate startDate1 = currentBookings.getValue().get(j).getBookingStartDate();
-                LocalDate startDate2 = currentBookings.getValue().get(j + 1).getBookingStartDate();
-                if (startDate2.isAfter(startDate1)) {
-                    Booking tempBooking = currentBookings.getValue().get(j);
-                    // Replace positions
-                    currentBookings.getValue().set(j, currentBookings.getValue().get(j + 1));
-                    currentBookings.getValue().set(j + 1, tempBooking);
-                }
-            }
-        }
-        currentBookings.getValue().get(0).customerFirstName = "";
+        Objects.requireNonNull(currentBookings.getValue()).sort((
+                Comparator.comparing(Booking::getBookingStartDate)).reversed());
     }
 
     /**

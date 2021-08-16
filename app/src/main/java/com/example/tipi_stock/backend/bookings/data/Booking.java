@@ -17,13 +17,7 @@ public class Booking {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    public String structureType;
-
-    public String customerFirstName;
-
-    public String customerLastName;
-
-    public String customerAddress;
+    public String structureType, customerFirstName, customerLastName, customerAddress;
 
     public double cost;
 
