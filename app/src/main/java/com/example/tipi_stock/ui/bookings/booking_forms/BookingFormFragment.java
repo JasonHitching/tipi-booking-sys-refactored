@@ -116,14 +116,27 @@ public class BookingFormFragment extends Fragment {
                     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMM-d-yyyy");
                     String replaceCommas = Objects.requireNonNull(dateText.getText()).toString().replaceAll(", ", " ");
 
-                    String result = bookingViewModel.createBooking(
-                            Objects.requireNonNull(structureText.getText()).toString(),
-                            Objects.requireNonNull(firstNameText.getText()).toString(),
-                            Objects.requireNonNull(lastNameText.getText()).toString(),
-                            Objects.requireNonNull(firstLineAddress.getText()).toString(),
-                            Objects.requireNonNull(costText.getText()).toString(),
-                            LocalDate.parse(replaceCommas.replace(" ", "-"), dateFormatter),
-                            Objects.requireNonNull(daysText.getText()).toString());
+                    double costVal = 0;
+                    int numOfDays = 0;
+
+                    try {
+                        costVal = Double.parseDouble(Objects.requireNonNull(costText.getText()).toString());
+                        numOfDays = Integer.parseInt(Objects.requireNonNull(daysText.getText().toString()));
+                    } catch (NumberFormatException ex) {
+                        Log.d(TAG, "onViewCreated: Parse Failed");
+                    }
+
+                    Booking newBooking = new Booking.BookingBuilder()
+                            .withType(Objects.requireNonNull(structureText.getText()).toString())
+                            .withFirstName(Objects.requireNonNull(firstNameText.getText()).toString())
+                            .withLastName(Objects.requireNonNull(lastNameText.getText()).toString())
+                            .withAddress(Objects.requireNonNull(firstLineAddress.getText()).toString())
+                            .withCost(costVal)
+                            .withDate(LocalDate.parse(replaceCommas.replace(" ", "-"), dateFormatter))
+                            .withNumDays(numOfDays)
+                            .build();
+
+                    String result = bookingViewModel.createBooking(newBooking);
 
                     // If the booking wasn't a success, display a dialog window with the reason
                     if (!result.equals("success")) {

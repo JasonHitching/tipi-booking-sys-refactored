@@ -60,58 +60,103 @@ public abstract class BookingDatabase extends RoomDatabase {
             // Start with a fresh database each load
             dao.deleteAllBookings();
 
-            Booking stretchBooking = new Booking("Stetch Tent",
-                    "Joe", "Copping",
-                    "1 Pleasant Drive GT53DP",800,
-                    LocalDate.of(2021, 8, 1), 5);
+            Booking stretchBooking = new Booking.BookingBuilder()
+                    .withType("Stretch Tent")
+                    .withFirstName("Joe")
+                    .withLastName("Copping")
+                    .withAddress("1 Pleasant Drive GT53DP")
+                    .withCost(800)
+                    .withDate(LocalDate.of(2021, 8, 1))
+                    .withNumDays(5)
+                    .build();
             dao.insertBooking(stretchBooking);
 
-            Booking tipiBooking = new Booking( "Tipi",
-                    "Jason", "Hitching",
-                    "76 Inway Drive KL25TP", 233,
-                    LocalDate.of(2021, 6, 3), 10);
+            Booking tipiBooking = new Booking.BookingBuilder()
+                    .withType("Tipi")
+                    .withFirstName("Jason")
+                    .withLastName("Hitching")
+                    .withAddress("76 Inway Drive KL25TP")
+                    .withCost(233)
+                    .withDate(LocalDate.of(2021, 6, 3))
+                    .withNumDays(10)
+                    .build();
             dao.insertBooking(tipiBooking);
 
-            Booking marqueeBooking = new Booking( "Marquee",
-                    "Daniel", "Rose",
-                    "26 Flyway Drive TY5YYH",500,
-                    LocalDate.of(2022, 1, 22), 2);
+            Booking marqueeBooking = new Booking.BookingBuilder()
+                    .withType("Marquee")
+                    .withFirstName("Daniel")
+                    .withLastName("Rose")
+                    .withAddress("26 Flyway Drive TY5YYH")
+                    .withCost(500)
+                    .withDate(LocalDate.of(2022, 1, 22))
+                    .withNumDays(2)
+                    .build();
             dao.insertBooking(marqueeBooking);
 
-            Booking marqueeBooking2 = new Booking( "Marquee",
-                    "Daniel", "Rose",
-                    "26 Flyway Drive TY5YYH",500,
-                    LocalDate.of(2022, 1, 22), 2);
+            Booking marqueeBooking2 = new Booking.BookingBuilder()
+                    .withType("Marquee")
+                    .withFirstName("Daniel")
+                    .withLastName("Rose")
+                    .withAddress("26 Flyway Drive TY5YYH")
+                    .withCost(500)
+                    .withDate(LocalDate.of(2022, 1, 22))
+                    .withNumDays(2)
+                    .build();
             dao.insertBooking(marqueeBooking2);
 
-            Booking tipiBooking2 = new Booking( "Tipi",
-                    "Jason", "Hitching",
-                    "76 Inway Drive KL25TP", 233,
-                    LocalDate.of(2021, 6, 3), 10);
+            Booking tipiBooking2 = new Booking.BookingBuilder()
+                    .withType("Tipi")
+                    .withFirstName("Jason")
+                    .withLastName("Hitching")
+                    .withAddress("76 Inway Drive KL25TP")
+                    .withCost(233)
+                    .withDate(LocalDate.of(2021, 6, 3))
+                    .withNumDays(10)
+                    .build();
             dao.insertBooking(tipiBooking2);
 
-            Booking tipiBooking3 = new Booking( "Tipi",
-                    "Jason", "Hitching",
-                    "76 Inway Drive KL25TP", 233,
-                    LocalDate.of(2021, 6, 3), 10);
+            Booking tipiBooking3 = new Booking.BookingBuilder()
+                    .withType("Tipi")
+                    .withFirstName("Jason")
+                    .withLastName("Hitching")
+                    .withAddress("76 Inway Drive KL25TP")
+                    .withCost(233)
+                    .withDate(LocalDate.of(2021, 6, 3))
+                    .withNumDays(10)
+                    .build();
             dao.insertBooking(tipiBooking3);
 
-            Booking tipiBooking4 = new Booking( "Tipi",
-                    "Jason", "Hitching",
-                    "76 Inway Drive KL25TP", 233,
-                    LocalDate.of(2021, 6, 3), 10);
+            Booking tipiBooking4 = new Booking.BookingBuilder()
+                    .withType("Tipi")
+                    .withFirstName("Jason")
+                    .withLastName("Hitching")
+                    .withAddress("76 Inway Drive KL25TP")
+                    .withCost(233)
+                    .withDate(LocalDate.of(2021, 6, 3))
+                    .withNumDays(10)
+                    .build();
             dao.insertBooking(tipiBooking4);
 
-            Booking stretchBooking2 = new Booking("Stetch Tent",
-                    "Joe", "Copping",
-                    "1 Pleasant Drive GT53DP",800,
-                    LocalDate.of(2021, 8, 1), 5);
+            Booking stretchBooking2 = new Booking.BookingBuilder()
+                    .withType("Stretch Tent")
+                    .withFirstName("Joe")
+                    .withLastName("Copping")
+                    .withAddress("1 Pleasant Drive GT53DP")
+                    .withCost(800)
+                    .withDate(LocalDate.of(2021, 8, 1))
+                    .withNumDays(5)
+                    .build();
             dao.insertBooking(stretchBooking2);
 
-            Booking stretchBooking3 = new Booking("Stetch Tent",
-                    "Joe", "Copping",
-                    "1 Pleasant Drive GT53DP",800,
-                    LocalDate.of(2021, 8, 1), 5);
+            Booking stretchBooking3 = new Booking.BookingBuilder()
+                    .withType("Stretch Tent")
+                    .withFirstName("Joe")
+                    .withLastName("Copping")
+                    .withAddress("1 Pleasant Drive GT53DP")
+                    .withCost(800)
+                    .withDate(LocalDate.of(2021, 8, 1))
+                    .withNumDays(5)
+                    .build();
             dao.insertBooking(stretchBooking3);
 
         });

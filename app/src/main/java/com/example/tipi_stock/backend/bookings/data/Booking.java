@@ -31,15 +31,64 @@ public class Booking {
 
     public int numberOfDays;
 
-    public Booking(String structureType, String customerFirstName, String customerLastName,
-                   String customerAddress, double cost, LocalDate bookingStartDate, int numberOfDays) {
-        this.structureType = structureType;
-        this.customerFirstName = customerFirstName;
-        this.customerLastName = customerLastName;
-        this.customerAddress = customerAddress;
-        this.cost = cost;
-        this.bookingStartDate = bookingStartDate;
-        this.numberOfDays = numberOfDays;
+    public Booking() {}
+
+    /**
+     * Inner class for building a booking object
+     */
+    public static class BookingBuilder {
+        private String structureType, customerFirstName, customerLastName, customerAddress;
+        private double cost;
+        private LocalDate bookingStartDate;
+        int numberOfDays;
+
+        public final BookingBuilder withType(String structureType) {
+            this.structureType = structureType;
+            return this;
+        }
+
+        public final BookingBuilder withFirstName(String customerFirstName) {
+            this.customerFirstName = customerFirstName;
+            return this;
+        }
+
+        public final BookingBuilder withLastName(String customerLastName) {
+            this.customerLastName = customerLastName;
+            return this;
+        }
+
+        public final BookingBuilder withAddress(String customerAddress) {
+            this.customerAddress = customerAddress;
+            return this;
+        }
+
+        public final BookingBuilder withCost(double cost) {
+            this.cost = cost;
+            return this;
+        }
+
+        public final BookingBuilder withDate(LocalDate bookingStartDate) {
+            this.bookingStartDate = bookingStartDate;
+            return this;
+        }
+
+        public final BookingBuilder withNumDays(int numberOfDays) {
+            this.numberOfDays = numberOfDays;
+            return this;
+        }
+
+        public Booking build() {
+            Booking newBooking = new Booking();
+            newBooking.structureType = this.structureType;
+            newBooking.customerFirstName = this.customerFirstName;
+            newBooking.customerLastName = this.customerLastName;
+            newBooking.customerAddress = this.customerAddress;
+            newBooking.cost = this.cost;
+            newBooking.bookingStartDate = this.bookingStartDate;
+            newBooking.numberOfDays = this.numberOfDays;
+
+            return newBooking;
+        }
     }
 
     public final int getId() {

@@ -98,23 +98,12 @@ public class SharedBookingViewModel extends AndroidViewModel {
      * @param startDate  Date that the booking starts
      * @param noOfDays   Number of days the structure will be booked for
      */
-    public final String createBooking(String structType, String firstName, String lastName, String address,
-                                      String cost, LocalDate startDate, String noOfDays) {
-
-        double costVal;
-        int numOfDays;
-
-        try {
-            costVal = Double.parseDouble(cost);
-            numOfDays = Integer.parseInt(noOfDays);
-        } catch (NumberFormatException ex) {
-            return "Invalid number input, check cost and days";
-        }
+    public final String createBooking(Booking newBooking) {
 
         LocalDate todaysDate = LocalDate.now();
 
         // Check that the start date hasn't already passed
-        if (startDate.isBefore(todaysDate)) {
+        if (newBooking.getBookingStartDate().isBefore(todaysDate)) {
             return "Booking date entered is in the past";
         }
 //        } else if (startDate.getYear() > LocalDate.now().getDayOfYear() + 2) {
@@ -124,10 +113,9 @@ public class SharedBookingViewModel extends AndroidViewModel {
 //        } else if (startDate.isBefore(todaysDate)) {
         //    return "Booking date entered is in the past";
       //  }
-        else if (checkExisting(startDate, structType)) {
+        else if (checkExisting(newBooking.getBookingStartDate(), newBooking.getStructureType())) {
             return "Identical booking exists on that date";
         } else {
-            Booking newBooking = new Booking(structType, firstName, lastName, address, costVal, startDate, numOfDays);
             roomRepo.insertBooking(newBooking);
         }
         return "success";
