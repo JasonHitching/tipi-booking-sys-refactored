@@ -9,6 +9,7 @@ import com.example.tipi_stock.backend.bookings.data.Booking;
 import com.example.tipi_stock.backend.bookings.data.BookingRepository;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
@@ -44,18 +45,20 @@ public class SharedBookingViewModel extends AndroidViewModel {
     }
 
     public final List<Booking> sortDateAscending() {
-        Objects.requireNonNull(currentBookings.getValue()).sort((booking1, booking2) ->
+        List<Booking> ascendingList = new ArrayList<>(Objects.requireNonNull(currentBookings.getValue()));
+        ascendingList.sort((booking1, booking2) ->
                 booking1.getBookingStartDate().compareTo(booking2.getBookingStartDate()));
-        return currentBookings.getValue();
+        return ascendingList;
     }
 
     /**
      * Sort the recycler view cards by date in descending order
      */
     public final List<Booking> sortDateDescending() {
-        Objects.requireNonNull(currentBookings.getValue()).sort((
+        List<Booking> descendingList = new ArrayList<>(Objects.requireNonNull(currentBookings.getValue()));
+        descendingList.sort((
                 Comparator.comparing(Booking::getBookingStartDate)).reversed());
-        return currentBookings.getValue();
+        return descendingList;
     }
 
     /**

@@ -252,7 +252,7 @@
     <inspection_tool class="AndroidLintNotifyDataSetChanged" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="AndroidLintObjectAnimatorBinding" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="AndroidLintObsoleteLayoutParam" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="AndroidLintObsoleteSdkInt" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="AndroidLintObsoleteSdkInt" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="AndroidLintOldTargetApi" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="AndroidLintOnClick" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="AndroidLintOrientation" enabled="true" level="ERROR" enabled_by_default="true" />
@@ -467,7 +467,7 @@
       <option name="ignoreTransformationOfOriginalParameter" value="false" />
     </inspection_tool>
     <inspection_tool class="AssignmentToNull" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="AssignmentToStaticFieldFromInstanceMethod" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="AssignmentToStaticFieldFromInstanceMethod" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="AssignmentToSuperclassField" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="AssignmentUsedAsCondition" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="AssociatedTypeMismatch" enabled="true" level="WARNING" enabled_by_default="true" />
