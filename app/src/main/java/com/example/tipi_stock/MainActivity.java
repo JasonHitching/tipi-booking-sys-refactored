@@ -22,10 +22,7 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static BookingAdapter bookingAdapter;
     BottomNavigationView navView;
-
-    PowerManager.WakeLock sysWakeLock;
 
     @Override
     protected final void onCreate(Bundle savedInstanceState) {
@@ -49,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         SharedBookingViewModel bookingViewModel = new ViewModelProvider(this).get(SharedBookingViewModel.class);
 
         PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        sysWakeLock = powerManager.newWakeLock(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, "Tipi:tipitWakeLock");
     }
 
     // Function for hiding bottom navigation when required

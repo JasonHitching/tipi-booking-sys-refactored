@@ -115,9 +115,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         final TextView customerTextView;
         final TextView customerAddText;
         final TextView dateStartTextView;
-        TextView dateEndTextView;
         final ImageButton binButton;
-        ImageButton modifyButton;
 
         /**
          * ViewHolder constructor

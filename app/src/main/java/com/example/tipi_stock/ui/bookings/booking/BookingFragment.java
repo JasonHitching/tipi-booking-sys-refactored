@@ -35,7 +35,6 @@ public class BookingFragment extends Fragment implements BookingAdapter.OnBookin
 
     private static BookingAdapter bookingAdapter;
     private SharedBookingViewModel sharedBookingViewModel;
-    private Button sortButton;
     private View rootView;
     final Bundle dataBundle;
 

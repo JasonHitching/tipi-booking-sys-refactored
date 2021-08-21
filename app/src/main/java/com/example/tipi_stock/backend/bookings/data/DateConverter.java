@@ -10,6 +10,10 @@ import java.time.LocalDate;
  */
 public class DateConverter {
 
+    private DateConverter() {
+
+    }
+
     /**
      * Type converter for converting a String to a Date object
      * @param stringToConvert
