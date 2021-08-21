@@ -102,12 +102,6 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         }
     }
 
-    // Method called when the live data in room database changes
-    public final void setBookings(List<Booking> currentBookings) {
-        bookingData = currentBookings;
-        notifyDataSetChanged();
-    }
-
     /**
      * ViewHolder class provides a wrapper for around a View, contains layout for individual
      * items in the list
