@@ -24,6 +24,11 @@ public abstract class BookingDatabase extends RoomDatabase {
     static final ExecutorService databaseExecutor =
             Executors.newFixedThreadPool(4);
 
+    /**
+     * Method for obtaining reference to cached Room database
+     * @param context application context
+     * @return a database instance
+     */
     public static BookingDatabase getDbInstance(final Context context) {
         // If a database instance hasn't been created already
         if (dbInstance == null) {
@@ -40,6 +45,7 @@ public abstract class BookingDatabase extends RoomDatabase {
         return dbInstance;
     }
 
+    // Callback for populating data each time the database opens
     private static final RoomDatabase.Callback insertCallback = new RoomDatabase.Callback() {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {

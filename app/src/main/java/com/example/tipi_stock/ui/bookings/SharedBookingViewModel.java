@@ -43,7 +43,9 @@ public class SharedBookingViewModel extends AndroidViewModel {
     public final Booking getBooking(int pos) {
         return Objects.requireNonNull(currentBookings.getValue()).get(pos);
     }
-
+    /**
+     * Sort the recycler view cards by date in ascending order
+     */
     public final List<Booking> sortDateAscending() {
         List<Booking> ascendingList = new ArrayList<>(Objects.requireNonNull(currentBookings.getValue()));
         ascendingList.sort((booking1, booking2) ->

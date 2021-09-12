@@ -106,7 +106,6 @@ public class BookingFragment extends Fragment implements BookingAdapter.OnBookin
      *
      * @param position
      */
-    @Override
     public final void onBookingClicked(int position) {
         dataBundle.clear();
         dataBundle.putInt("position", position);

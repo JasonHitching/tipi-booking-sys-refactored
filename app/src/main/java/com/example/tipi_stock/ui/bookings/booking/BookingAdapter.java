@@ -62,8 +62,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         // If the booking data exists
         if (bookingData != null ) {
             cardHolder.setRowData(bookingData.get(position));
-        }  // Maybe try display "no bookings" ??
-
+        }
 
         // Bind the current ViewHolder with an on click listener that removes the item
         cardHolder.binButton.setOnClickListener(view -> {
@@ -152,8 +151,6 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
             dateStartTextView.setText("Date: " + booking.getBookingStartDate().getDayOfMonth()
                             + " - " + booking.getBookingStartDate().getMonth()
                             + " - " + booking.getBookingStartDate().getYear());
-
-
         }
     }
 

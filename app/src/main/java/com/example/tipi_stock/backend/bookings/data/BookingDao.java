@@ -2,6 +2,7 @@ package com.example.tipi_stock.backend.bookings.data;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -24,10 +25,10 @@ public interface BookingDao {
     LiveData<List<Booking>> getAllBookings();
 
     /**
-     * SQL insert for adding a booking to the booking databse
+     * SQL insert for adding a booking to the booking database
      * @param booking booking to be added
      */
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertBooking(Booking booking);
 
     /**
@@ -36,6 +37,11 @@ public interface BookingDao {
     @Query("DELETE FROM booking_table")
     void deleteAllBookings();
 
+    /**
+     * SQL update for updating an existing booking
+     * @param booking entity to be updated
+     */
     @Update(entity = Booking.class)
     void updateBooking(Booking booking);
 }
+

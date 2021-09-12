@@ -16,6 +16,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.tipi_stock.R;
 
+/**
+ * Select functionality from Android Jetpack library classes are utilised
+ * to achieve some of the required functionality for this class:
+ *      https://developer.android.com/reference/androidx/fragment/app/Fragment
+ */
 public class InventoryFragment extends Fragment {
 
     View rootView;

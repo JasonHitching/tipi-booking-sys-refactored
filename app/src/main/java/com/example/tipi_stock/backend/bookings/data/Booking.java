@@ -167,5 +167,4 @@ public class Booking {
                     && Objects.equals(this.numberOfDays, tempBooking.numberOfDays);
         }
     }
-
 }

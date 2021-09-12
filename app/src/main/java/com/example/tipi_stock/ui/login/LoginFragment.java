@@ -47,7 +47,6 @@ public class LoginFragment extends Fragment {
             navigationView.setVisibility(View.GONE);
         }, 0);
 
-
         return rootView;
     }
 
