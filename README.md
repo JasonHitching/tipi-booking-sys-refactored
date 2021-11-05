@@ -4,6 +4,6 @@
 
 
 
-This repository contains a refactored version of my Masters project prototype artefact.
+This repository hosts the refactored version of the initial prototype ([See here](https://github.com/JasonHitching/tipi-booking-system)) that was developed to satisfy the practical work required for my masters project/thesis. Refactoring of the initial artefact was conducted with utilisation of static analysis, hardware resource usage was then analysed both prior to and proceeding refactoring. From resource usage analysis, conclusions were drawn as to how effective static analysis is at reducing mobile resource usage. 
 
 
